@@ -1,9 +1,14 @@
 package com.spring.www.usuarios_backend.entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "authorities")
@@ -40,6 +45,10 @@ public class Authority {
         return password;
     }
 
+    public String getUsername() {
+        return email;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -51,4 +60,5 @@ public class Authority {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }
